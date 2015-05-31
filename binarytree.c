@@ -43,9 +43,13 @@ void traverseNthLevel(struct node *root,int level,int direction){
 	}
 }
 int isSumProperty(struct node *root){
+	int sum = 0;
 	if(root == NULL) return 0;
 	else if(root->left == NULL && root->right == NULL) return 0;
 	else{
+		if(root->left != NULL) sum += root->left->val;
+		if(root->right != NULL) sum += root->right->val;
+		return (root->val == sum) && isSumProperty(root->left) && isSumProperty(root->right);
 	}		
 }
 int main(){
