@@ -52,6 +52,20 @@ int isSumProperty(struct node *root){
 		return (root->val == sum) && isSumProperty(root->left) && isSumProperty(root->right);
 	}		
 }
+int isHeightBalanced(struct node *root,int *height){	
+	int lh = 0,rh = 0;
+	int l = 0,r = 0;
+	if(root == NULL) {
+		*height = 0;
+		return 1;
+	}
+	l = isHeightBalanced(root->left,&lh);
+	r = isHeightBalanced(root->right,&rh);
+	
+	*height = max(lh,rh) + 1;
+	if((lh - rh >= 2) || (rh - lh >=2)) return 0;
+	else l && h;
+}
 int main(){
 	struct node *root = newNode(1);
 	root->left        = newNode(2);
